@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  /* MUFA brand orange — #f75a0b */
+  --color-orange-50: #fff4ee;
+  --color-orange-100: #fde0cc;
+  --color-orange-200: #fdb98a;
+  --color-orange-300: #fc9055;
+  --color-orange-400: #f87233;
+  --color-orange-500: #f75a0b;
+  --color-orange-600: #f75a0b;
+  --color-orange-700: #d94e09;
+  --color-orange-800: #b34208;
+  --color-orange-900: #8c3406;
+
+  /* MUFA brand blue — #0588b1 */
+  --color-sky-50: #e8f6fb;
+  --color-sky-100: #c4e8f5;
+  --color-sky-200: #8dd1ea;
+  --color-sky-300: #4fb8de;
+  --color-sky-400: #1fa2ce;
+  --color-sky-500: #0588b1;
+  --color-sky-600: #0588b1;
+  --color-sky-700: #0588b1;
+  --color-sky-800: #046f92;
+  --color-sky-900: #035672;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #111827;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+}
+
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
