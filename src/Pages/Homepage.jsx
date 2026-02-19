@@ -1246,8 +1246,8 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-sky-600 opacity-10 -translate-x-16 translate-y-12 pointer-events-none" />
 
         <div
-          className="relative mx-auto max-w-7xl px-4 py-16 md:py-24 grid items-center"
-          style={{ gridTemplateColumns: "1fr 100px 1fr", gap: "0 24px" }}
+          className="relative mx-auto max-w-7xl px-4 py-16 md:py-24 grid items-center gap-10 md:gap-16"
+          style={{ gridTemplateColumns: "1fr 1fr" }}
         >
           {/* LEFT — text */}
           <div>
