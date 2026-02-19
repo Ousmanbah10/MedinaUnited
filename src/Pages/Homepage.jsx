@@ -53,13 +53,13 @@ function HeroSlider() {
   }
 
   return (
-    <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
+    <div className="relative w-full h-full overflow-hidden rounded-2xl">
       {/* Image */}
       <img
         key={current}
         src={heroSlides[current].src}
         alt={heroSlides[current].alt}
-        className="w-full h-full object-cover rounded-2xl"
+        className="w-full h-full object-cover"
         style={{
           opacity: fading ? 0 : 1,
           transition: "opacity 0.4s ease-in-out",
@@ -67,6 +67,45 @@ function HeroSlider() {
           minHeight: "400px",
         }}
       />
+
+      {/* MUFA Logo watermark */}
+      <div
+        className="absolute top-4 left-4 flex items-center gap-2.5 z-10"
+        style={{
+          background: "rgba(0,0,0,0.45)",
+          backdropFilter: "blur(6px)",
+          borderRadius: "999px",
+          padding: "6px 14px 6px 6px",
+        }}
+      >
+        <img
+          src="/logo.png"
+          alt="MUFA"
+          style={{
+            width: "36px",
+            height: "36px",
+            borderRadius: "50%",
+            objectFit: "cover",
+            border: "2px solid rgba(255,255,255,0.4)",
+          }}
+        />
+        <span
+          style={{
+            color: "white",
+            fontWeight: 800,
+            fontSize: "0.75rem",
+            letterSpacing: "0.05em",
+            textTransform: "uppercase",
+            lineHeight: 1.2,
+          }}
+        >
+          Medina United
+          <br />
+          <span style={{ fontWeight: 500, opacity: 0.8 }}>
+            Football Academy
+          </span>
+        </span>
+      </div>
 
       {/* Dot indicators */}
       <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
@@ -535,7 +574,14 @@ function PlayersSection() {
       </div>
 
       {/* Sliding cards */}
-      <div style={{ overflow: "hidden", position: "relative", zIndex: 1, padding: "0 1rem" }}>
+      <div
+        style={{
+          overflow: "hidden",
+          position: "relative",
+          zIndex: 1,
+          padding: "0 1rem",
+        }}
+      >
         <div
           style={{
             display: "flex",
@@ -568,7 +614,14 @@ function PlayersSection() {
           margin: "0 auto",
         }}
       >
-        <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", marginBottom: "1.5rem" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "0.5rem",
+            marginBottom: "1.5rem",
+          }}
+        >
           {Array.from({ length: players.length - SHOW + 1 }).map((_, i) => (
             <button
               key={i}
@@ -591,8 +644,22 @@ function PlayersSection() {
 
       {/* See More divider */}
       <div style={{ position: "relative", zIndex: 1, padding: "0 2rem 2rem" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem", maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ flex: 1, height: "1px", background: "rgba(255,255,255,0.15)" }} />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "1rem",
+            maxWidth: "1280px",
+            margin: "0 auto",
+          }}
+        >
+          <div
+            style={{
+              flex: 1,
+              height: "1px",
+              background: "rgba(255,255,255,0.15)",
+            }}
+          />
           <Link
             to="/teams"
             style={{
@@ -611,7 +678,13 @@ function PlayersSection() {
           >
             Men's Team — See More
           </Link>
-          <div style={{ flex: 1, height: "1px", background: "rgba(255,255,255,0.15)" }} />
+          <div
+            style={{
+              flex: 1,
+              height: "1px",
+              background: "rgba(255,255,255,0.15)",
+            }}
+          />
         </div>
       </div>
     </section>
@@ -1172,7 +1245,10 @@ export default function Home() {
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-orange-500 opacity-20 translate-x-32 -translate-y-16 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-sky-600 opacity-10 -translate-x-16 translate-y-12 pointer-events-none" />
 
-        <div className="relative mx-auto max-w-7xl px-4 py-16 md:py-24 grid gap-10 md:grid-cols-2 items-center">
+        <div
+          className="relative mx-auto max-w-7xl px-4 py-16 md:py-24 grid items-center"
+          style={{ gridTemplateColumns: "1fr 100px 1fr", gap: "0 24px" }}
+        >
           {/* LEFT — text */}
           <div>
             <span className="inline-block bg-sky-700 text-white text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full mb-5">
@@ -1208,7 +1284,7 @@ export default function Home() {
 
           {/* RIGHT — auto-sliding photo carousel */}
           <div className="flex justify-center md:justify-end">
-            <div className="w-full max-w-xl" style={{ height: "660px" }}>
+            <div className="w-full" style={{ height: "560px" }}>
               <HeroSlider />
             </div>
           </div>
@@ -1226,7 +1302,7 @@ export default function Home() {
 
       {/* ABOUT PREVIEW */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20 grid gap-10 md:grid-cols-2 items-center">
+        <div className="mx-auto max-w-7xl px-4 py-10 md:py-12 grid gap-8 md:grid-cols-2 items-center">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-sky-700">
               About MUFA
@@ -1234,18 +1310,14 @@ export default function Home() {
             <h2 className="mt-2 text-3xl md:text-4xl font-black text-gray-900 leading-tight">
               Gambia's Premier Free Youth Football Academy
             </h2>
-            <p className="mt-4 text-gray-600 leading-relaxed">
+            <p className="mt-3 text-gray-600 leading-relaxed text-sm">
               Medina United Football Academy (MUFA) is one of Gambia's finest
               professionally organised training academies for competitive youth
               football. Located in Yundum Airport, West Coast Region, The
               Gambia, our curriculum develops fundamental technical skills and
-              tactical awareness.
-            </p>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              We currently have over 450 registered youth aged 6–25, and the
-              academy is completely open and free to all within that age range.
-              Players receive jerseys, boots, equipment and full coaching at no
-              cost.
+              tactical awareness. Over 450 registered youth aged 6–25 train
+              completely free — jerseys, boots, equipment and coaching all
+              provided at no cost.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
@@ -1262,38 +1334,104 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3">
             {[
               {
-                icon: "⚽",
                 title: "Free Jerseys & Boots",
                 desc: "Every registered player receives full kit at no charge.",
+                photo: GL + "imgi_107_DSC_0915.jpg",
+                accent: "#f75a0b",
+                stat: "100%",
+                statLabel: "Free",
               },
               {
-                icon: "🏆",
                 title: "Competitive Teams",
-                desc: "U9, U12, U15, and U23 squads competing at national level.",
+                desc: "U9, U12, U15 and U23 squads competing at national level.",
+                photo: "/throphy-photo.png",
+                accent: "#0588b1",
+                stat: "4",
+                statLabel: "Squads",
               },
               {
-                icon: "👨‍🏫",
                 title: "Expert Coaches",
-                desc: "Former Gambian internationals and experienced coaches.",
+                desc: "Former Gambian internationals and certified coaching staff.",
+                photo: GL + "imgi_109_DSC_1456.jpg",
+                accent: "#0588b1",
+                stat: "10+",
+                statLabel: "Coaches",
               },
               {
-                icon: "🌍",
                 title: "International Links",
-                desc: "Partnerships with clubs in Senegal, Spain and beyond.",
+                desc: "Partnerships with clubs in Senegal, Spain and England.",
+                photo: ML + "imgi_29_DSC_0782.jpg",
+                accent: "#f75a0b",
+                stat: "6+",
+                statLabel: "Partners",
               },
             ].map((f) => (
               <div
                 key={f.title}
-                className="bg-gray-50 rounded-2xl p-5 border border-gray-100"
+                className="group relative rounded-2xl overflow-hidden"
+                style={{ height: "200px" }}
               >
-                <p className="text-2xl mb-2">{f.icon}</p>
-                <h4 className="font-bold text-gray-900 text-sm">{f.title}</h4>
-                <p className="text-gray-500 text-xs mt-1 leading-relaxed">
-                  {f.desc}
-                </p>
+                {/* Photo */}
+                <img
+                  src={f.photo}
+                  alt={f.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* Gradient */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: `linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 55%, transparent 100%)`,
+                  }}
+                />
+                {/* Accent top bar */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-1"
+                  style={{ background: f.accent }}
+                />
+                {/* Stat badge */}
+                <div
+                  className="absolute top-3 right-3 flex flex-col items-center justify-center rounded-xl text-white"
+                  style={{
+                    background: "rgba(0,0,0,0.45)",
+                    backdropFilter: "blur(4px)",
+                    padding: "0.35rem 0.6rem",
+                    minWidth: "2.5rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: "0.95rem",
+                      fontWeight: 900,
+                      lineHeight: 1,
+                    }}
+                  >
+                    {f.stat}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.5rem",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      opacity: 0.75,
+                    }}
+                  >
+                    {f.statLabel}
+                  </span>
+                </div>
+                {/* Text */}
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h4 className="font-black text-white text-sm leading-tight mb-1">
+                    {f.title}
+                  </h4>
+                  <p className="text-white/65 text-xs leading-relaxed">
+                    {f.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

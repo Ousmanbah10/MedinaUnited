@@ -73,7 +73,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 shadow-lg">
       {/* MAIN NAV — blue */}
       <div className="bg-sky-700">
-        <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-7xl px-4 py-6 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link
             to="/"
