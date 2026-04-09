@@ -12,6 +12,7 @@ export default function Footer() {
               alt="Medina United Football Academy"
               className="h-10 w-10 rounded-full object-cover border-2 border-gray-600"
             />
+            
             <div>
               <p className="font-extrabold text-white text-sm uppercase tracking-wide">Medina United</p>
               <p className="text-orange-400 text-xs">Football Academy</p>
