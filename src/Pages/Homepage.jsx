@@ -171,6 +171,15 @@ const stats = [
 
 const GL = "/MEDINA UNITED GALLARY/Gallery _ medinaunitedacademy.com/";
 const ML = "/MEDINA UNITED GALLARY/medinaunitedacademy.com/";
+const SP = "/MEDINA UNITED GALLARY/Sponsors/";
+
+const sponsors = [
+  { name: "CMS Insurance",        photo: SP + "CMS Insurance.jpg",        category: "Insurance" },
+  { name: "DL Logistics",         photo: SP + "DL Logistics.jpg",         category: "Logistics" },
+  { name: "Delta Auto & Shipping", photo: SP + "Delta Auto & Shipping.jpg", category: "Auto & Shipping" },
+  { name: "FBS Soccer",           photo: SP + "FBS soccer.jpg",           category: "Soccer" },
+  { name: "Florida Wireless",     photo: SP + "FloridaWireless.jpg",      category: "Telecommunications" },
+];
 
 const news = [
   {
@@ -1309,14 +1318,17 @@ export default function Home() {
               About MUFA
             </span>
             <h2 className="mt-2 text-3xl md:text-4xl font-black text-gray-900 leading-tight">
-              Gambia's Premier Free Youth Football Academy
+              Gambia's Premier Football Academy
             </h2>
             <p className="mt-3 text-gray-600 leading-relaxed text-sm">
-              Medina United Football Academy (MUFA) is one of Gambia's finest
-              professionally organised training academies for competitive youth
-              football. Located in Yundum Airport, West Coast Region, The
-              Gambia, our curriculum develops fundamental technical skills and
-              tactical awareness. Over 450 registered youth aged 6–25 train
+              Medina United Football Academy (MUFA) are proud{" "}
+              <strong className="text-gray-900">2024 GFF Cup Champions</strong>{" "}
+              and currently compete in{" "}
+              <strong className="text-gray-900">Division 1</strong> of Gambian
+              football. One of Gambia's finest professionally organised
+              academies, from the First Team to the U9s our squads compete at
+              local and national level. Located in Yundum Airport, West Coast
+              Region, The Gambia, over 450 registered youth aged 6–25 train
               completely free — jerseys, boots, equipment and coaching all
               provided at no cost.
             </p>
@@ -1348,11 +1360,11 @@ export default function Home() {
                 statLabel: "Free",
               },
               {
-                title: "Competitive Teams",
-                desc: "U9, U12, U15 and U23 squads competing at national level.",
+                title: "First Team & Squads",
+                desc: "First Team, U9, U12, U15 and U23 competing at national level.",
                 photo: "/throphy-photo.png",
                 accent: "#0588b1",
-                stat: "4",
+                stat: "5",
                 statLabel: "Squads",
               },
               {
@@ -1441,115 +1453,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* YOUTH SPOTLIGHT */}
-      <section
-        style={{
-          background: "#0588b1",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        {/* Dot-grid overlay */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-            backgroundImage:
-              "radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        />
-        <div
-          className="relative mx-auto max-w-7xl px-4"
-          style={{ padding: "9rem 1rem" }}
-        >
-          {/* Heading */}
-          <div className="text-center mb-10">
-            <span
-              style={{
-                display: "inline-block",
-                background: "#f75a0b",
-                color: "white",
-                fontSize: "0.65rem",
-                fontWeight: 900,
-                textTransform: "uppercase",
-                letterSpacing: "0.2em",
-                padding: "0.3rem 1rem",
-                borderRadius: "9999px",
-                marginBottom: "1rem",
-              }}
-            >
-              Youth is Our Mission
-            </span>
-            <h2
-              style={{
-                color: "white",
-                fontSize: "clamp(2rem, 5vw, 3.5rem)",
-                fontWeight: 900,
-                lineHeight: 1.05,
-                margin: "0 0 0.75rem",
-              }}
-            >
-              Built for Young{" "}
-              <span style={{ color: "#f75a0b" }}>Gambians</span>
-            </h2>
-            <p
-              style={{
-                color: "rgba(255,255,255,0.65)",
-                fontSize: "0.95rem",
-                maxWidth: "520px",
-                margin: "0 auto",
-                lineHeight: 1.6,
-              }}
-            >
-              450+ registered youth aged 6–25 train completely free. Four
-              squads, one mission — unlocking the next generation of Gambian
-              football talent.
-            </p>
-          </div>
-
-          {/* CTA */}
-          <div style={{ textAlign: "center" }}>
-            <Link
-              to="/youth"
-              style={{
-                display: "inline-block",
-                background: "#f75a0b",
-                color: "white",
-                padding: "0.85rem 2.5rem",
-                borderRadius: "0.75rem",
-                fontWeight: 900,
-                fontSize: "0.85rem",
-                textDecoration: "none",
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-                marginRight: "1rem",
-                transition: "opacity 0.2s",
-              }}
-            >
-              Explore Youth Programme
-            </Link>
-            <Link
-              to="/join"
-              style={{
-                display: "inline-block",
-                border: "2px solid rgba(255,255,255,0.4)",
-                color: "white",
-                padding: "0.85rem 2.5rem",
-                borderRadius: "0.75rem",
-                fontWeight: 700,
-                fontSize: "0.85rem",
-                textDecoration: "none",
-                transition: "opacity 0.2s",
-              }}
-            >
-              Join Free
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* FIXTURES & RESULTS */}
       <FixturesSection />
 
@@ -1583,37 +1486,149 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BECOME A SPONSOR CTA */}
+      {/* ACADEMY SPOTLIGHT */}
       <section
-        className="text-white"
-        style={{ background: "#0588b1" }}
+        style={{
+          background: "#0588b1",
+          position: "relative",
+          overflow: "hidden",
+        }}
       >
-        <div className="mx-auto max-w-7xl px-4 py-24 text-center">
-          <span className="inline-block text-white text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-5" style={{ background: "#f75a0b" }}>
-            Partner With Us
-          </span>
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
-            Become a Sponsor
-          </h2>
-          <p className="text-sky-200 max-w-2xl mx-auto text-base leading-relaxed mb-8">
-            Help us develop the next generation of Gambian football talent. Your
-            support funds free jerseys, boots, coaching and tournament entry for
-            450+ registered youth — completely free of charge.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/sponsors"
-              className="rounded-xl px-8 py-3.5 text-sm font-black text-white transition shadow-lg"
-              style={{ background: "#f75a0b" }}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            backgroundImage:
+              "radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+        <div
+          className="relative mx-auto max-w-7xl px-4"
+          style={{ padding: "7rem 1rem" }}
+        >
+          <div className="text-center mb-10">
+            <span
+              style={{
+                display: "inline-block",
+                background: "#f75a0b",
+                color: "white",
+                fontSize: "0.65rem",
+                fontWeight: 900,
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+                padding: "0.3rem 1rem",
+                borderRadius: "9999px",
+                marginBottom: "1rem",
+              }}
             >
-              View Sponsorship Tiers
+              Youth is Our Mission
+            </span>
+            <h2
+              style={{
+                color: "white",
+                fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                fontWeight: 900,
+                lineHeight: 1.05,
+                margin: "0 0 0.75rem",
+              }}
+            >
+              Built for Young{" "}
+              <span style={{ color: "#f75a0b" }}>Gambians</span>
+            </h2>
+            <p
+              style={{
+                color: "rgba(255,255,255,0.65)",
+                fontSize: "0.95rem",
+                maxWidth: "560px",
+                margin: "0 auto",
+                lineHeight: 1.6,
+              }}
+            >
+              450+ registered youth aged 6–25 train completely free. Four
+              squads, one mission — unlocking the next generation of Gambian
+              football talent.
+            </p>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <Link
+              to="/teams"
+              style={{
+                display: "inline-block",
+                background: "#f75a0b",
+                color: "white",
+                padding: "0.85rem 2.5rem",
+                borderRadius: "0.75rem",
+                fontWeight: 900,
+                fontSize: "0.85rem",
+                textDecoration: "none",
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                marginRight: "1rem",
+                transition: "opacity 0.2s",
+              }}
+            >
+              Meet the First Team
             </Link>
             <Link
-              to="/contact"
-              className="rounded-xl border-2 px-8 py-3.5 text-sm font-bold text-white transition"
-              style={{ borderColor: "white" }}
+              to="/youth"
+              style={{
+                display: "inline-block",
+                border: "2px solid rgba(255,255,255,0.4)",
+                color: "white",
+                padding: "0.85rem 2.5rem",
+                borderRadius: "0.75rem",
+                fontWeight: 700,
+                fontSize: "0.85rem",
+                textDecoration: "none",
+                transition: "opacity 0.2s",
+              }}
             >
-              Contact Us
+              Explore Youth Programme
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SPONSORS */}
+      <section className="bg-white border-t border-gray-100">
+        <div className="mx-auto max-w-7xl px-4 py-16">
+          <div className="text-center mb-10">
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#0588b1" }}>
+              Our Partners
+            </span>
+            <h2 className="mt-2 text-3xl font-black text-gray-900">
+              Proud to Be Supported By
+            </h2>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5 max-w-5xl mx-auto mb-10">
+            {sponsors.map((s) => (
+              <div
+                key={s.name}
+                className="rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-sm"
+              >
+                <div className="flex items-center justify-center bg-gray-50 border-b border-gray-100" style={{ height: "140px" }}>
+                  <img
+                    src={s.photo}
+                    alt={s.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-3 text-center">
+                  <p className="font-black text-gray-900 text-xs leading-tight">{s.name}</p>
+                  <p className="text-xs mt-0.5 font-medium uppercase tracking-wide" style={{ color: "#0588b1" }}>{s.category}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <Link
+              to="/sponsors"
+              className="inline-block rounded-xl px-8 py-3.5 text-sm font-black text-white transition shadow-lg"
+              style={{ background: "#f75a0b" }}
+            >
+              Become a Partner
             </Link>
           </div>
         </div>

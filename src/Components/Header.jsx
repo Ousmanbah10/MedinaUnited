@@ -3,13 +3,12 @@ import { useState } from "react";
 
 const mainNav = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
   { to: "/teams", label: "Teams" },
   { to: "/youth", label: "Youth" },
   { to: "/news", label: "News" },
   { to: "/sponsors", label: "Sponsors" },
-  { to: "/faq", label: "FAQ" },
-  { to: "/contact", label: "Contact" },
+  { to: "/faq", label: "FAQ & Contact" },
+  { to: "/about", label: "About" },
   { to: "/join", label: "Join Free" },
 ];
 

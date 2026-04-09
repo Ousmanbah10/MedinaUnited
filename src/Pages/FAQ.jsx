@@ -1,6 +1,76 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+const contacts = [
+  { role: "General Manager",        name: "Sanna Jobarteh",    phone: "+220 389 1423" },
+  { role: "Technical Director",     name: "Sang Mendy",        phone: "+220 762 2396" },
+  { role: "Founder & Chairman",     name: "Michael Nicol",     phone: "+1 305 975 6303" },
+  { role: "Press & Media Secretary",name: "Paul Steven Preira",phone: "" },
+  { role: "Accountant / Treasurer", name: "Sang Gomez",        phone: "" },
+];
+
+const phones = ["+220 502 5813", "+220 389 1423", "+220 762 2396", "+220 630 6350"];
+
+const fixtures = [
+  {
+    id: 1,
+    type: "result",
+    result: "W",
+    competition: "GFF Regional League",
+    matchday: "Round 12",
+    team1: "MUFA U23",
+    team2: "Yundum Athletic",
+    score: "3–1",
+    date: "Sat, 15 Feb 2026",
+    venue: "FIFA Goal Project, Yundum",
+  },
+  {
+    id: 2,
+    type: "result",
+    result: "D",
+    competition: "GFF Academy League",
+    matchday: "Round 7",
+    team1: "Brikama FC",
+    team2: "MUFA U15",
+    score: "1–1",
+    date: "Sun, 9 Feb 2026",
+    venue: "Brikama Mini Stadium",
+  },
+  {
+    id: 3,
+    type: "upcoming",
+    competition: "GFF Youth Cup",
+    matchday: "Quarter-Final",
+    team1: "MUFA U15",
+    team2: "Kombo Youth FC",
+    date: "Sat, 22 Feb 2026",
+    time: "4:00 PM",
+    venue: "Independence Stadium, Bakau",
+  },
+  {
+    id: 4,
+    type: "upcoming",
+    competition: "GFF Regional League",
+    matchday: "Round 13",
+    team1: "MUFA U23",
+    team2: "Lamin FC",
+    date: "Sat, 1 Mar 2026",
+    time: "3:30 PM",
+    venue: "FIFA Goal Project, Yundum",
+  },
+  {
+    id: 5,
+    type: "upcoming",
+    competition: "GFF Academy League",
+    matchday: "Round 8",
+    team1: "Brikama FC",
+    team2: "MUFA U12",
+    date: "Sun, 8 Mar 2026",
+    time: "10:00 AM",
+    venue: "Brikama Mini Stadium",
+  },
+];
+
 const faqs = [
   {
     q: "How many different teams does Medina United Academy have?",
@@ -84,6 +154,14 @@ function FAQItem({ faq, index }) {
 }
 
 export default function FAQ() {
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setSent(true);
+  }
+
   return (
     <>
       {/* Hero */}
@@ -108,28 +186,191 @@ export default function FAQ() {
         </div>
       </section>
 
-      {/* Still have questions */}
+      {/* MATCH CALENDAR */}
       <section className="bg-white border-t border-gray-100">
-        <div className="mx-auto max-w-7xl px-4 py-16 text-center">
-          <h2 className="text-2xl font-black text-gray-900 mb-3">Still have a question?</h2>
-          <p className="text-gray-500 text-sm mb-6 max-w-md mx-auto">
-            Our team is happy to help. Send us a message or call us directly.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/contact"
-              className="rounded-xl px-7 py-3 text-sm font-bold text-white transition"
-              style={{ background: "#f75a0b" }}
-            >
-              Contact Us
-            </Link>
-            <Link
-              to="/join"
-              className="rounded-xl border-2 px-7 py-3 text-sm font-bold transition"
-              style={{ borderColor: "#f75a0b", color: "#f75a0b" }}
-            >
-              Join Free
-            </Link>
+        <div className="mx-auto max-w-3xl px-4 py-16">
+          <div className="mb-8">
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#0588b1" }}>
+              Match Calendar
+            </span>
+            <h2 className="mt-1 text-2xl font-black text-gray-900">Fixtures &amp; Results</h2>
+            <p className="mt-2 text-gray-500 text-sm">Upcoming matches and recent results across all MUFA squads.</p>
+          </div>
+          <div className="space-y-3">
+            {fixtures.map((f) => {
+              const isResult = f.type === "result";
+              const resultColors = { W: "#15803d", D: "#b45309", L: "#dc2626" };
+              const resultLabels = { W: "WIN", D: "DRAW", L: "LOSS" };
+              return (
+                <div
+                  key={f.id}
+                  className="rounded-2xl border border-gray-100 bg-white shadow-sm overflow-hidden"
+                >
+                  <div className="flex items-center justify-between px-5 py-4 gap-4">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-0.5">{f.competition} · {f.matchday}</p>
+                      <p className="font-black text-gray-900 text-sm leading-tight">
+                        {f.team1} <span className="text-gray-400 font-normal">vs</span> {f.team2}
+                        {isResult && (
+                          <span className="ml-2 font-black" style={{ color: resultColors[f.result] }}>{f.score}</span>
+                        )}
+                      </p>
+                      <p className="text-gray-400 text-xs mt-1">{f.date}{f.time ? ` · ${f.time}` : ""} · {f.venue}</p>
+                    </div>
+                    <span
+                      className="text-xs font-black uppercase tracking-widest px-2.5 py-1 rounded-full shrink-0"
+                      style={{
+                        background: isResult ? (resultColors[f.result] + "18") : "#f75a0b18",
+                        color: isResult ? resultColors[f.result] : "#f75a0b",
+                      }}
+                    >
+                      {isResult ? resultLabels[f.result] : "Upcoming"}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section className="bg-gray-50 border-t border-gray-100">
+        <div className="mx-auto max-w-7xl px-4 py-16">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#0588b1" }}>Get In Touch</span>
+            <h2 className="mt-1 text-3xl font-black text-gray-900">Still Have a Question?</h2>
+            <p className="mt-2 text-gray-500 text-sm max-w-md mx-auto">
+              Can't find your answer above? Send us a message or reach out directly — we'd love to hear from you.
+            </p>
+          </div>
+
+          <div className="grid gap-12 lg:grid-cols-2 max-w-6xl mx-auto">
+            {/* Contact form */}
+            <div>
+              <h3 className="text-xl font-black text-gray-900 mb-6">Send a Message</h3>
+              {sent ? (
+                <div className="bg-orange-50 border border-orange-200 rounded-2xl p-8 text-center">
+                  <div className="h-14 w-14 rounded-full bg-[#f75a0b] text-white flex items-center justify-center mx-auto mb-4 text-2xl font-black">✓</div>
+                  <h3 className="font-bold text-orange-900 text-lg mb-2">Message Received!</h3>
+                  <p className="text-orange-700 text-sm">Thank you for reaching out. Our team will get back to you as soon as possible.</p>
+                  <button
+                    onClick={() => { setSent(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
+                    className="mt-5 text-sm font-semibold text-orange-700 hover:text-orange-900 transition"
+                  >
+                    Send another message
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Full Name *</label>
+                      <input
+                        type="text" required value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        placeholder="Your full name"
+                        className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition bg-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Email Address *</label>
+                      <input
+                        type="email" required value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        placeholder="your@email.com"
+                        className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition bg-white"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Subject *</label>
+                    <select
+                      required value={form.subject}
+                      onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                      className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition bg-white text-gray-700"
+                    >
+                      <option value="">Select a subject...</option>
+                      <option value="join">Joining the Academy</option>
+                      <option value="sponsor">Sponsorship Enquiry</option>
+                      <option value="media">Media / Press</option>
+                      <option value="partnership">Partnership</option>
+                      <option value="general">General Enquiry</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Message *</label>
+                    <textarea
+                      required rows={5} value={form.message}
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      placeholder="Tell us how we can help..."
+                      className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition bg-white resize-none"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full rounded-xl px-6 py-3 text-sm font-bold text-white transition"
+                    style={{ background: "#f75a0b" }}
+                  >
+                    Send Message
+                  </button>
+                </form>
+              )}
+            </div>
+
+            {/* Contact details */}
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-xl font-black text-gray-900 mb-5">Contact Details</h3>
+                <div className="space-y-4">
+                  <div className="bg-white rounded-2xl border border-gray-100 p-5">
+                    <p className="text-xs font-bold uppercase tracking-widest text-[#0588b1] mb-1">Address</p>
+                    <p className="text-gray-800 font-semibold text-sm">Medina United Football Academy</p>
+                    <p className="text-gray-500 text-sm">Yundum Airport, Western Region</p>
+                    <p className="text-gray-500 text-sm">The Gambia, West Africa</p>
+                    <a
+                      href="https://maps.google.com/?q=Yundum+Airport+Gambia"
+                      target="_blank" rel="noopener noreferrer"
+                      className="inline-block mt-2 text-xs font-semibold text-orange-600 hover:text-orange-800 transition"
+                    >
+                      View on Google Maps &rarr;
+                    </a>
+                  </div>
+                  <div className="bg-white rounded-2xl border border-gray-100 p-5">
+                    <p className="text-xs font-bold uppercase tracking-widest text-[#0588b1] mb-2">Email</p>
+                    <a href="mailto:medinaunitedacademy@gmail.com" className="text-gray-800 text-sm font-semibold hover:text-orange-600 transition break-all">
+                      medinaunitedacademy@gmail.com
+                    </a>
+                  </div>
+                  <div className="bg-white rounded-2xl border border-gray-100 p-5">
+                    <p className="text-xs font-bold uppercase tracking-widest text-[#0588b1] mb-2">Phone Numbers</p>
+                    <div className="space-y-1">
+                      {phones.map((p) => (
+                        <a key={p} href={`tel:${p.replace(/\s/g, "")}`} className="block text-sm font-semibold text-gray-800 hover:text-orange-600 transition">{p}</a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 className="font-black text-gray-900 text-lg mb-4">Key Contacts</h3>
+                <div className="space-y-3">
+                  {contacts.map((c) => (
+                    <div key={c.name} className="bg-white rounded-xl border border-gray-100 p-4 flex items-center justify-between gap-4">
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-wider text-[#0588b1]">{c.role}</p>
+                        <p className="font-semibold text-gray-900 text-sm mt-0.5">{c.name}</p>
+                      </div>
+                      {c.phone && (
+                        <a href={`tel:${c.phone.replace(/\s/g, "")}`} className="shrink-0 text-xs font-semibold text-orange-600 hover:text-orange-800 transition">
+                          {c.phone}
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
