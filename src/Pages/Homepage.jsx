@@ -298,7 +298,7 @@ const players = [
   },
 ];
 
-const SHOW = 3;
+const SHOW = 5;
 
 function PlayerCard({ player }) {
   const [hovered, setHovered] = useState(false);
@@ -308,7 +308,7 @@ function PlayerCard({ player }) {
       onMouseLeave={() => setHovered(false)}
       style={{
         position: "relative",
-        height: "540px",
+        height: "420px",
         overflow: "hidden",
         cursor: "pointer",
         borderRadius: "1rem",
@@ -779,7 +779,7 @@ function FixtureCard({ fixture }) {
       {/* Coloured top */}
       <div
         style={{
-          background: "linear-gradient(135deg, #035672 0%, #0588b1 100%)",
+          background: "#0588b1",
           padding: "1.25rem 1rem 1.5rem",
           position: "relative",
           minHeight: "148px",
@@ -1049,7 +1049,7 @@ function FixturesSection() {
         style={{
           maxWidth: "1280px",
           margin: "0 auto",
-          padding: "3rem 2rem 2.5rem",
+          padding: "5rem 2rem 4rem",
         }}
       >
         {/* Header */}
@@ -1188,8 +1188,8 @@ function FixturesSection() {
 function StatCard({ value, label }) {
   return (
     <div className="text-center">
-      <p className="text-4xl font-black text-sky-300">{value}</p>
-      <p className="text-orange-100 text-sm mt-1 font-medium">{label}</p>
+      <p className="text-4xl font-black text-white">{value}</p>
+      <p className="text-white/60 text-sm mt-1 font-medium">{label}</p>
     </div>
   );
 }
@@ -1236,7 +1236,7 @@ export default function Home() {
     <>
       {/* HERO */}
       <section
-        className="relative bg-orange-700 text-white overflow-hidden"
+        className="relative text-white overflow-hidden"
         style={{
           backgroundImage:
             "radial-gradient(ellipse at top right, #c2410c 0%, #f75a0b 40%, #9a3412 100%)",
@@ -1251,12 +1251,12 @@ export default function Home() {
         >
           {/* LEFT — text */}
           <div>
-            <span className="inline-block bg-sky-700 text-white text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full mb-5">
+            <span className="inline-block text-white text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full mb-5" style={{ background: "rgba(0,0,0,0.25)" }}>
               Free Youth Football Training — The Gambia
             </span>
             <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight">
               ROAD TO
-              <span className="block text-sky-300">SUCCESS</span>
+              <span className="block text-white">SUCCESS</span>
             </h1>
             <p className="mt-4 text-xl md:text-2xl font-semibold text-orange-200 uppercase tracking-wide">
               Passion &bull; Hard Work &bull; Discipline
@@ -1269,13 +1269,14 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 to="/join"
-                className="rounded-xl bg-sky-700 px-7 py-3 text-sm font-black text-white hover:bg-sky-600 transition shadow-lg"
+                className="rounded-xl px-7 py-3 text-sm font-black text-white transition shadow-lg"
+                style={{ background: "#1e293b" }}
               >
                 Join the Academy — It's Free
               </Link>
               <Link
                 to="/about"
-                className="rounded-xl border-2 border-orange-300 px-7 py-3 text-sm font-bold text-orange-100 hover:bg-orange-600 transition"
+                className="rounded-xl border-2 border-white/40 px-7 py-3 text-sm font-bold text-orange-100 transition"
               >
                 Learn More
               </Link>
@@ -1292,8 +1293,8 @@ export default function Home() {
       </section>
 
       {/* STATS BAR */}
-      <section className="bg-orange-900">
-        <div className="mx-auto max-w-7xl px-4 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section style={{ background: "#1e293b" }}>
+        <div className="mx-auto max-w-7xl px-4 py-12 grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((s) => (
             <StatCard key={s.label} {...s} />
           ))}
@@ -1302,9 +1303,9 @@ export default function Home() {
 
       {/* ABOUT PREVIEW */}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-10 md:py-12 grid gap-8 md:grid-cols-2 items-center">
+        <div className="mx-auto max-w-7xl px-4 py-20 md:py-24 grid gap-8 md:grid-cols-2 items-center">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-sky-700">
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#0588b1" }}>
               About MUFA
             </span>
             <h2 className="mt-2 text-3xl md:text-4xl font-black text-gray-900 leading-tight">
@@ -1322,13 +1323,15 @@ export default function Home() {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 to="/about"
-                className="rounded-xl bg-orange-600 px-6 py-3 text-sm font-bold text-white hover:bg-orange-700 transition"
+                className="rounded-xl px-6 py-3 text-sm font-bold text-white transition"
+                style={{ background: "#f75a0b" }}
               >
                 Our Story
               </Link>
               <Link
                 to="/teams"
-                className="rounded-xl border-2 border-orange-600 px-6 py-3 text-sm font-bold text-orange-600 hover:bg-orange-50 transition"
+                className="rounded-xl border-2 px-6 py-3 text-sm font-bold transition"
+                style={{ borderColor: "#f75a0b", color: "#f75a0b" }}
               >
                 View Teams
               </Link>
@@ -1438,6 +1441,115 @@ export default function Home() {
         </div>
       </section>
 
+      {/* YOUTH SPOTLIGHT */}
+      <section
+        style={{
+          background: "#0588b1",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Dot-grid overlay */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            backgroundImage:
+              "radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+        <div
+          className="relative mx-auto max-w-7xl px-4"
+          style={{ padding: "9rem 1rem" }}
+        >
+          {/* Heading */}
+          <div className="text-center mb-10">
+            <span
+              style={{
+                display: "inline-block",
+                background: "#f75a0b",
+                color: "white",
+                fontSize: "0.65rem",
+                fontWeight: 900,
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+                padding: "0.3rem 1rem",
+                borderRadius: "9999px",
+                marginBottom: "1rem",
+              }}
+            >
+              Youth is Our Mission
+            </span>
+            <h2
+              style={{
+                color: "white",
+                fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                fontWeight: 900,
+                lineHeight: 1.05,
+                margin: "0 0 0.75rem",
+              }}
+            >
+              Built for Young{" "}
+              <span style={{ color: "#f75a0b" }}>Gambians</span>
+            </h2>
+            <p
+              style={{
+                color: "rgba(255,255,255,0.65)",
+                fontSize: "0.95rem",
+                maxWidth: "520px",
+                margin: "0 auto",
+                lineHeight: 1.6,
+              }}
+            >
+              450+ registered youth aged 6–25 train completely free. Four
+              squads, one mission — unlocking the next generation of Gambian
+              football talent.
+            </p>
+          </div>
+
+          {/* CTA */}
+          <div style={{ textAlign: "center" }}>
+            <Link
+              to="/youth"
+              style={{
+                display: "inline-block",
+                background: "#f75a0b",
+                color: "white",
+                padding: "0.85rem 2.5rem",
+                borderRadius: "0.75rem",
+                fontWeight: 900,
+                fontSize: "0.85rem",
+                textDecoration: "none",
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                marginRight: "1rem",
+                transition: "opacity 0.2s",
+              }}
+            >
+              Explore Youth Programme
+            </Link>
+            <Link
+              to="/join"
+              style={{
+                display: "inline-block",
+                border: "2px solid rgba(255,255,255,0.4)",
+                color: "white",
+                padding: "0.85rem 2.5rem",
+                borderRadius: "0.75rem",
+                fontWeight: 700,
+                fontSize: "0.85rem",
+                textDecoration: "none",
+                transition: "opacity 0.2s",
+              }}
+            >
+              Join Free
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* FIXTURES & RESULTS */}
       <FixturesSection />
 
@@ -1446,10 +1558,10 @@ export default function Home() {
 
       {/* LATEST NEWS */}
       <section className="bg-gray-50 border-t border-gray-100">
-        <div className="mx-auto max-w-7xl px-4 py-16">
+        <div className="mx-auto max-w-7xl px-4 py-20 md:py-24">
           <div className="flex items-end justify-between mb-8">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-sky-700">
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "#0588b1" }}>
                 Latest Updates
               </span>
               <h2 className="mt-1 text-3xl font-black text-gray-900">
@@ -1473,13 +1585,11 @@ export default function Home() {
 
       {/* BECOME A SPONSOR CTA */}
       <section
-        className="bg-sky-800 text-white"
-        style={{
-          backgroundImage: "linear-gradient(135deg, #035672 0%, #0588b1 100%)",
-        }}
+        className="text-white"
+        style={{ background: "#0588b1" }}
       >
-        <div className="mx-auto max-w-7xl px-4 py-20 text-center">
-          <span className="inline-block bg-orange-600 text-white text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+        <div className="mx-auto max-w-7xl px-4 py-24 text-center">
+          <span className="inline-block text-white text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-5" style={{ background: "#f75a0b" }}>
             Partner With Us
           </span>
           <h2 className="text-4xl md:text-5xl font-black mb-4">
@@ -1493,13 +1603,15 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/sponsors"
-              className="rounded-xl bg-orange-600 px-8 py-3.5 text-sm font-black text-white hover:bg-orange-500 transition shadow-lg"
+              className="rounded-xl px-8 py-3.5 text-sm font-black text-white transition shadow-lg"
+              style={{ background: "#f75a0b" }}
             >
               View Sponsorship Tiers
             </Link>
             <Link
               to="/contact"
-              className="rounded-xl border-2 border-sky-400 px-8 py-3.5 text-sm font-bold text-white hover:bg-sky-700 transition"
+              className="rounded-xl border-2 px-8 py-3.5 text-sm font-bold text-white transition"
+              style={{ borderColor: "white" }}
             >
               Contact Us
             </Link>

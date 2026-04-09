@@ -144,11 +144,11 @@ export default function News() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-orange-700 text-white py-16">
+      <section className="relative text-white overflow-hidden py-20 md:py-28" style={{ backgroundImage: "radial-gradient(ellipse at top right, #c2410c 0%, #f75a0b 40%, #9a3412 100%)" }}>
         <div className="mx-auto max-w-7xl px-4">
-          <span className="text-sky-300 text-xs font-bold uppercase tracking-widest">Latest Updates</span>
-          <h1 className="mt-2 text-4xl md:text-5xl font-black">Academy News</h1>
-          <p className="mt-3 text-orange-200 text-lg max-w-2xl">
+          <span className="inline-block text-white text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full mb-4" style={{ background: "rgba(0,0,0,0.25)" }}>Latest Updates</span>
+          <h1 className="text-4xl md:text-5xl font-black">Academy News</h1>
+          <p className="mt-3 text-white/80 text-lg max-w-2xl">
             Stay up to date with signings, events, partnerships and achievements at Medina United Football Academy.
           </p>
         </div>
@@ -244,7 +244,6 @@ export default function News() {
 
           {filtered.length === 0 && (
             <div className="text-center py-20 text-gray-400">
-              <p className="text-4xl mb-3">📰</p>
               <p className="font-semibold">No articles in this category yet.</p>
             </div>
           )}
@@ -252,7 +251,7 @@ export default function News() {
       </section>
 
       {/* CTA */}
-      <section className="bg-orange-700 text-white">
+      <section className="text-white" style={{ background: "#f75a0b" }}>
         <div className="mx-auto max-w-7xl px-4 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
           <div>
             <h3 className="font-black text-xl">Want to be part of the story?</h3>

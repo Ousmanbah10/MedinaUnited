@@ -46,15 +46,15 @@ export default function Join() {
     <>
       {/* Hero */}
       <section
-        className="bg-orange-700 text-white py-20"
-        style={{ backgroundImage: "linear-gradient(135deg, #9a3412 0%, #c2410c 100%)" }}
+        className="relative text-white overflow-hidden py-20 md:py-28"
+        style={{ backgroundImage: "radial-gradient(ellipse at top right, #c2410c 0%, #f75a0b 40%, #9a3412 100%)" }}
       >
         <div className="mx-auto max-w-7xl px-4 text-center">
-          <span className="inline-block bg-sky-700 text-white text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+          <span className="inline-block text-white text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-5" style={{ background: "rgba(0,0,0,0.25)" }}>
             100% Free — No Fees Ever
           </span>
           <h1 className="text-5xl md:text-6xl font-black leading-tight">JOIN US NOW</h1>
-          <p className="mt-3 text-2xl font-semibold text-sky-300 uppercase tracking-wide">
+          <p className="mt-3 text-2xl font-semibold text-white uppercase tracking-wide">
             You Are Just 1 Click Away
           </p>
           <p className="mt-5 text-orange-100 max-w-xl mx-auto text-base leading-relaxed">
@@ -68,13 +68,13 @@ export default function Join() {
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-4 py-16">
           <div className="text-center mb-10">
-            <span className="text-xs font-bold uppercase tracking-widest text-sky-700">Simple Process</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0588b1]">Simple Process</span>
             <h2 className="mt-2 text-3xl font-black text-gray-900">How to Join</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s) => (
               <div key={s.step} className="text-center">
-                <div className="h-14 w-14 rounded-full bg-orange-600 text-white font-black text-xl flex items-center justify-center mx-auto mb-4">
+                <div className="h-14 w-14 rounded-full bg-[#f75a0b] text-white font-black text-xl flex items-center justify-center mx-auto mb-4">
                   {s.step}
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">{s.title}</h3>
@@ -112,7 +112,7 @@ export default function Join() {
 
             {sent ? (
               <div className="bg-orange-50 border border-orange-200 rounded-2xl p-8 text-center">
-                <div className="h-14 w-14 rounded-full bg-orange-600 text-white flex items-center justify-center mx-auto mb-4 text-2xl font-black">
+                <div className="h-14 w-14 rounded-full bg-[#f75a0b] text-white flex items-center justify-center mx-auto mb-4 text-2xl font-black">
                   ✓
                 </div>
                 <h3 className="font-bold text-orange-900 text-lg mb-2">Registration Received!</h3>
@@ -185,7 +185,8 @@ export default function Join() {
                   />
                 </div>
                 <button type="submit"
-                  className="w-full rounded-xl bg-orange-600 px-6 py-3.5 text-sm font-black text-white hover:bg-orange-700 transition"
+                  className="w-full rounded-xl px-6 py-3.5 text-sm font-black text-white transition"
+                  style={{ background: "#f75a0b" }}
                 >
                   Submit Registration — It's Free
                 </button>
@@ -196,7 +197,7 @@ export default function Join() {
           <div className="space-y-6">
             <div>
               <h2 className="text-2xl font-black text-gray-900 mb-5">Register in Person</h2>
-              <div className="bg-orange-700 rounded-2xl p-6 text-white">
+              <div className="rounded-2xl p-6 text-white" style={{ background: "#f75a0b" }}>
                 <p className="font-black text-lg mb-4">Contact Our Team Directly</p>
                 <div className="space-y-4 text-sm">
                   <div>
@@ -235,7 +236,7 @@ export default function Join() {
                   "Pathway to national and international football",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-orange-600 shrink-0" />
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#f75a0b] shrink-0" />
                     {item}
                   </li>
                 ))}

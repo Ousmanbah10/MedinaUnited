@@ -61,7 +61,7 @@ function FAQItem({ faq, index }) {
         className="w-full text-left px-6 py-5 flex items-start justify-between gap-4 hover:bg-gray-50 transition"
       >
         <div className="flex items-start gap-4">
-          <span className="mt-0.5 h-6 w-6 rounded-full bg-orange-600 text-white text-xs font-black flex items-center justify-center shrink-0">
+          <span className="mt-0.5 h-6 w-6 rounded-full bg-[#f75a0b] text-white text-xs font-black flex items-center justify-center shrink-0">
             {index + 1}
           </span>
           <span className="font-semibold text-gray-900 text-sm leading-snug">{faq.q}</span>
@@ -87,11 +87,11 @@ export default function FAQ() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-orange-700 text-white py-16">
+      <section className="relative text-white overflow-hidden py-20 md:py-28" style={{ backgroundImage: "radial-gradient(ellipse at top right, #c2410c 0%, #f75a0b 40%, #9a3412 100%)" }}>
         <div className="mx-auto max-w-7xl px-4">
-          <span className="text-sky-300 text-xs font-bold uppercase tracking-widest">Got Questions?</span>
-          <h1 className="mt-2 text-4xl md:text-5xl font-black">Frequently Asked Questions</h1>
-          <p className="mt-3 text-orange-200 text-lg max-w-2xl">
+          <span className="inline-block text-white text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full mb-4" style={{ background: "rgba(0,0,0,0.25)" }}>Got Questions?</span>
+          <h1 className="text-4xl md:text-5xl font-black">Frequently Asked Questions</h1>
+          <p className="mt-3 text-white/80 text-lg max-w-2xl">
             Everything you need to know about joining, training, sponsoring and connecting with Medina United Football Academy.
           </p>
         </div>
@@ -118,13 +118,15 @@ export default function FAQ() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="rounded-xl bg-orange-600 px-7 py-3 text-sm font-bold text-white hover:bg-orange-700 transition"
+              className="rounded-xl px-7 py-3 text-sm font-bold text-white transition"
+              style={{ background: "#f75a0b" }}
             >
               Contact Us
             </Link>
             <Link
               to="/join"
-              className="rounded-xl border-2 border-orange-600 px-7 py-3 text-sm font-bold text-orange-600 hover:bg-orange-50 transition"
+              className="rounded-xl border-2 px-7 py-3 text-sm font-bold transition"
+              style={{ borderColor: "#f75a0b", color: "#f75a0b" }}
             >
               Join Free
             </Link>

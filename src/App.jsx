@@ -11,6 +11,7 @@ import FAQ from "./Pages/FAQ.jsx";
 import Teams from "./Pages/Teams.jsx";
 import Sponsors from "./Pages/Sponsors.jsx";
 import Join from "./Pages/Join.jsx";
+import Youth from "./Pages/Youth.jsx";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="/teams" element={<Teams />} />
             <Route path="/sponsors" element={<Sponsors />} />
             <Route path="/join" element={<Join />} />
+            <Route path="/youth" element={<Youth />} />
           </Routes>
         </main>
         <Footer />

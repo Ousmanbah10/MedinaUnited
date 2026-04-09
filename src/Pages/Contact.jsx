@@ -22,11 +22,11 @@ export default function Contact() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-orange-700 text-white py-16">
+      <section className="relative text-white overflow-hidden py-20 md:py-28" style={{ backgroundImage: "radial-gradient(ellipse at top right, #c2410c 0%, #f75a0b 40%, #9a3412 100%)" }}>
         <div className="mx-auto max-w-7xl px-4">
-          <span className="text-sky-300 text-xs font-bold uppercase tracking-widest">Get In Touch</span>
-          <h1 className="mt-2 text-4xl md:text-5xl font-black">Contact Us</h1>
-          <p className="mt-3 text-orange-200 text-lg max-w-2xl">
+          <span className="inline-block text-white text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full mb-4" style={{ background: "rgba(0,0,0,0.25)" }}>Get In Touch</span>
+          <h1 className="text-4xl md:text-5xl font-black">Contact Us</h1>
+          <p className="mt-3 text-white/80 text-lg max-w-2xl">
             Wanna play with us or have questions? Let us know — we'd love to hear from you.
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function Contact() {
             <h2 className="text-2xl font-black text-gray-900 mb-6">Send a Message</h2>
             {sent ? (
               <div className="bg-orange-50 border border-orange-200 rounded-2xl p-8 text-center">
-                <div className="h-14 w-14 rounded-full bg-orange-600 text-white flex items-center justify-center mx-auto mb-4 text-2xl font-black">
+                <div className="h-14 w-14 rounded-full bg-[#f75a0b] text-white flex items-center justify-center mx-auto mb-4 text-2xl font-black">
                   ✓
                 </div>
                 <h3 className="font-bold text-orange-900 text-lg mb-2">Message Received!</h3>
@@ -102,7 +102,8 @@ export default function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full rounded-xl bg-orange-600 px-6 py-3 text-sm font-bold text-white hover:bg-orange-700 transition"
+                  className="w-full rounded-xl px-6 py-3 text-sm font-bold text-white transition"
+                  style={{ background: "#f75a0b" }}
                 >
                   Send Message
                 </button>
@@ -116,7 +117,7 @@ export default function Contact() {
               <h2 className="text-2xl font-black text-gray-900 mb-5">Contact Details</h2>
               <div className="space-y-4">
                 <div className="bg-white rounded-2xl border border-gray-100 p-5">
-                  <p className="text-xs font-bold uppercase tracking-widest text-sky-700 mb-1">Address</p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#0588b1] mb-1">Address</p>
                   <p className="text-gray-800 font-semibold text-sm">Medina United Football Academy</p>
                   <p className="text-gray-500 text-sm">Yundum Airport, Western Region</p>
                   <p className="text-gray-500 text-sm">The Gambia, West Africa</p>
@@ -131,7 +132,7 @@ export default function Contact() {
                 </div>
 
                 <div className="bg-white rounded-2xl border border-gray-100 p-5">
-                  <p className="text-xs font-bold uppercase tracking-widest text-sky-700 mb-2">Email</p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#0588b1] mb-2">Email</p>
                   <a
                     href="mailto:medinaunitedacademy@gmail.com"
                     className="text-gray-800 text-sm font-semibold hover:text-orange-600 transition break-all"
@@ -141,7 +142,7 @@ export default function Contact() {
                 </div>
 
                 <div className="bg-white rounded-2xl border border-gray-100 p-5">
-                  <p className="text-xs font-bold uppercase tracking-widest text-sky-700 mb-2">Phone Numbers</p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#0588b1] mb-2">Phone Numbers</p>
                   <div className="space-y-1">
                     {phones.map((p) => (
                       <a
@@ -163,7 +164,7 @@ export default function Contact() {
                 {contacts.map((c) => (
                   <div key={c.name} className="bg-white rounded-xl border border-gray-100 p-4 flex items-center justify-between gap-4">
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-sky-700">{c.role}</p>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#0588b1]">{c.role}</p>
                       <p className="font-semibold text-gray-900 text-sm mt-0.5">{c.name}</p>
                     </div>
                     {c.phone && (

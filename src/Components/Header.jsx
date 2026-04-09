@@ -5,6 +5,7 @@ const mainNav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/teams", label: "Teams" },
+  { to: "/youth", label: "Youth" },
   { to: "/news", label: "News" },
   { to: "/sponsors", label: "Sponsors" },
   { to: "/faq", label: "FAQ" },
@@ -16,6 +17,7 @@ const socials = [
   {
     label: "Facebook",
     href: "#",
+    facebook: true,
     icon: (
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -34,6 +36,7 @@ const socials = [
   {
     label: "Instagram",
     href: "#",
+    instagram: true,
     icon: (
       <svg
         width="14"
@@ -54,25 +57,30 @@ const socials = [
   {
     label: "YouTube",
     href: "#",
+    youtube: true,
     icon: (
       <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
         <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
-        <polygon
-          points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02"
-          fill="white"
-        />
+        <polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="white" />
       </svg>
     ),
   },
 ];
+
+function socialBg(s) {
+  if (s.youtube)   return { background: "#FF0000" };
+  if (s.facebook)  return { background: "#1877F2" };
+  if (s.instagram) return { background: "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)" };
+  return { background: "rgba(0,0,0,0.25)" };
+}
 
 export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 shadow-lg">
-      {/* MAIN NAV — blue */}
-      <div className="bg-sky-700">
+      {/* MAIN NAV */}
+      <div style={{ background: "#0588b1" }}>
         <div className="mx-auto max-w-7xl px-4 py-6 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link
@@ -103,24 +111,26 @@ export default function Header() {
                   className={({ isActive }) =>
                     `px-3 py-2 text-sm font-bold uppercase tracking-wide rounded transition ${
                       isActive
-                        ? "bg-sky-900 text-white"
-                        : "text-sky-100 hover:bg-sky-600 hover:text-white"
+                        ? "text-white"
+                        : "text-sky-100 hover:text-white"
                     }`
                   }
+                  style={({ isActive }) => isActive ? { background: "rgba(0,0,0,0.25)" } : {}}
                 >
                   {item.label}
                 </NavLink>
               ))}
             </nav>
 
-            {/* Social icons — separated by a divider */}
-            <div className="flex items-center gap-1.5 pl-3 border-l border-sky-500">
+            {/* Social icons */}
+            <div className="flex items-center gap-1.5 pl-3" style={{ borderLeft: "1px solid rgba(255,255,255,0.3)" }}>
               {socials.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
-                  className="h-7 w-7 rounded-full bg-sky-900 hover:bg-orange-600 text-white flex items-center justify-center transition"
+                  className="h-7 w-7 rounded-full text-white flex items-center justify-center transition hover:opacity-80"
+                  style={socialBg(s)}
                 >
                   {s.icon}
                 </a>
@@ -131,26 +141,19 @@ export default function Header() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setOpen((v) => !v)}
-            className="lg:hidden p-2 rounded text-white hover:bg-sky-600 transition"
+            className="lg:hidden p-2 rounded text-white transition"
+            style={{ background: "transparent" }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(0,0,0,0.15)")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
             aria-label="Toggle menu"
           >
             {open ? (
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M6 6l12 12M6 18L18 6"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
+                <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               </svg>
             ) : (
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M4 7h16M4 12h16M4 17h16"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
+                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               </svg>
             )}
           </button>
@@ -158,7 +161,7 @@ export default function Header() {
 
         {/* Mobile dropdown */}
         {open && (
-          <div className="lg:hidden border-t border-sky-600 bg-sky-800">
+          <div className="lg:hidden" style={{ borderTop: "1px solid rgba(255,255,255,0.2)", background: "rgba(0,0,0,0.2)" }}>
             <nav className="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-1">
               {mainNav.map((item) => (
                 <NavLink
@@ -167,23 +170,21 @@ export default function Header() {
                   end={item.to === "/"}
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
-                    `px-4 py-2.5 rounded text-sm font-bold uppercase tracking-wide transition ${
-                      isActive
-                        ? "bg-sky-900 text-white"
-                        : "text-sky-100 hover:bg-sky-700"
-                    }`
+                    `px-4 py-2.5 rounded text-sm font-bold uppercase tracking-wide transition text-white`
                   }
+                  style={({ isActive: a }) => a ? { background: "rgba(0,0,0,0.3)" } : {}}
                 >
                   {item.label}
                 </NavLink>
               ))}
-              <div className="flex gap-2 mt-3 pt-3 border-t border-sky-700">
+              <div className="flex gap-2 mt-3 pt-3" style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}>
                 {socials.map((s) => (
                   <a
                     key={s.label}
                     href={s.href}
                     aria-label={s.label}
-                    className="h-8 w-8 rounded-full bg-sky-900 hover:bg-orange-600 text-white flex items-center justify-center transition"
+                    className="h-8 w-8 rounded-full text-white flex items-center justify-center transition hover:opacity-80"
+                    style={socialBg(s)}
                   >
                     {s.icon}
                   </a>
